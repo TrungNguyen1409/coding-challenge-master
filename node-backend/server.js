@@ -25,15 +25,11 @@ app.get('/', function (req, res) {
 
 
 fs.writeFileSync("./index.get.json", '[]');
+for (let driver = 0; driver < 21; driver++){ 
+    getRenterData(); 
+}
 
-//Generate 10 objects to work with in the backend for the front end
-
-genobj(); genobj(); genobj(); genobj(); genobj();
-genobj(); genobj(); genobj(); genobj(); genobj();
-genobj(); genobj(); genobj(); genobj(); genobj();
-genobj(); genobj(); genobj(); genobj(); genobj();
-
-function genobj() {
+function getRenterData() {
     var o = JSON.parse(fs.readFileSync('./index.get.json', 'utf8'));
     var d = {
         driverName: randopeep.name(),
