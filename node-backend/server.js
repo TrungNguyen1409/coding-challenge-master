@@ -1,15 +1,17 @@
 // jshint esversion: 6
-var express = require('express');
-var cors = require('cors');
-
-var fs = require('fs');
-var http = require('http');
-
-var nodestatic = require('node-static');
-var randopeep = require('randopeep'); // using to generate new random, fake data
+const express = require('express');
+const cors = require('cors');
+const { uuid } = require('uuidv4');
 
 
-var app = express();
+const fs = require('fs');
+const http = require('http');
+
+const nodestatic = require('node-static');
+const randopeep = require('randopeep'); // using to generate new random, fake data
+
+
+const app = express();
 var file = new nodestatic.Server('../app');
 
 
@@ -30,8 +32,9 @@ for (let driver = 0; driver < 21; driver++){
 }
 
 function getRenterData() {
-    var o = JSON.parse(fs.readFileSync('./index.get.json', 'utf8'));
-    var d = {
+    var userData = JSON.parse(fs.readFileSync('./index.get.json', 'utf8'));
+    var driver = {
+        driverID: uuid(),
         driverName: randopeep.name(),
         driverCityOrigin: randopeep.address.city(),
         "driverLanguage": ['de', 'en', 'nl', 'fr', 'es', 'ar'][Math.floor(Math.random()*7)],
@@ -40,10 +43,10 @@ function getRenterData() {
         driverInfo: randopeep.corporate.catchPhrase(0),
         carMake: randopeep.corporate.name('large', 0),
         "kmDriven": Math.floor(Math.random() * 100000),
-        'location': randopeep.address.geo()
+        'location': randopeep.address.geo() // this informtion could be used to get user's location
     };
-    o.push(d);
-    fs.writeFileSync("./index.get.json", JSON.stringify(o));
+    userData.push(driver);
+    fs.writeFileSync("./index.get.json", JSON.stringify(userData));
 }
 
 //TODO: Move driver to different location randomly every 5 seconds
