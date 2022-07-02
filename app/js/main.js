@@ -7,3 +7,5 @@ btn.addEventListener('click', function onClick(event) {
   // 👇️ Change text color for clicked element only
   // event.target.style.color = 'salmon';
 });
+
+//fetch(localhost:3000)

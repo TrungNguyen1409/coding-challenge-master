@@ -17,16 +17,18 @@ const app = express();
 const appStatic = express();
 //var file = new nodestatic.Server('../app');
 
-appStatic.use('/static', express.static(path.join(__dirname, 'app')));
-const server = http.createServer(appStatic);
-const PORT = 8080 || process.env.PORT;
-server.listen(PORT, () => console.log(`StaticServer running on port ${PORT}`));
+appStatic.use('/', express.static('../app'))
 
-appStatic.get("/",function(req,res){
+
+//const server = http.createServer(appStatic);
+const PORT = 8080 || process.env.PORT;
+appStatic.listen(PORT, () => console.log(`StaticServer running on port ${PORT}`));
+
+ appStatic.get("/",function(req,res){
 
     res.sendFile("/Users/trungnguyen/Desktop/coding-challenge-master/app/index.html");
    
-   });
+   }); 
 
 // enable CORS to allow requests from frontend
 app.use(cors()); 
@@ -83,13 +85,15 @@ app.listen(3000, function() {
     console.log(`API Server is running`)
 });
 
+const jsonData= require('/Users/trungnguyen/Desktop/coding-challenge-master/node-backend/index.get.json'); 
+console.log(jsonData);
 
 
 
 
 
 
-appStatic.post("/",function(req,res){
+/* appStatic.post("/",function(req,res){
     console.log(req.body.cityName);
     console.log("Post request received");
   
@@ -113,4 +117,4 @@ appStatic.post("/",function(req,res){
         res.send();
       });
     });
-  });
+  }); */
