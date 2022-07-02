@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RentalTrack</title>
-</head>
-<body>
-    Do something with this file if you dont want to use the angular frontend :)
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div>Some text here</div>
+    <button id="btn">Button</button>
+
+    <script src="/Users/trungnguyen/Desktop/coding-challenge-master/app/main.js"></script>
+
     <form action="/" method="post">
         <label for="cityInput">City Name: </label>
         <input id="cityInput" type ="text" name="cityName" placeHolder="Enter city name"></input>
         <button type="submit" name="submit"> Get Weather</button>
-    </form>
-</body>
+      </form>
+
+      <form action="/driver" method="get">
+        <label for="cityInput">City Name: </label>
+        <input id="cityInput" type ="text" name="driver" placeHolder="Enter city name"></input>
+        <button type="submit" name="submit"> Get Weather</button>
+      </form>
+
+  </body>
 </html>
