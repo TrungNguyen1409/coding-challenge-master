@@ -1,13 +1,20 @@
-//Lets require import the FS module
-var fs = require('fs');
-
-// Express is our web framework for building a rest API
+// jshint esversion: 6
 var express = require('express');
-var  app = express();
 var cors = require('cors');
-app.use(cors()); // enable CORS to allow requests from frontend
+
+var fs = require('fs');
+var http = require('http');
 
 var nodestatic = require('node-static');
+var randopeep = require('randopeep'); // using to generate new random, fake data
+
+
+var app = express();
+var file = new nodestatic.Server('../app');
+
+
+// enable CORS to allow requests from frontend
+app.use(cors()); 
 
 // register handler to return driver data
 app.get('/', function (req, res) {
@@ -16,12 +23,6 @@ app.get('/', function (req, res) {
     });
 });
 
-var randopeep = require('randopeep');
-/*
-* randopeep is for generating stuff that we can include in our fake data.
-* */
-
-var file = new nodestatic.Server('../app');
 
 fs.writeFileSync("./index.get.json", '[]');
 
@@ -51,7 +52,7 @@ function genobj() {
 
 //TODO: Move driver to different location randomly every 5 seconds
 
-var http = require('http');
+
 // Create the server for serving static files (html, css etc.)
 http.createServer(function (request, response) {
     request.addListener('end', function () {
