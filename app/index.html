@@ -9,17 +9,17 @@
     <button id="btn">Button</button>
 
 
-    <form action="/" method="post">
-        <label for="cityInput">City Name: </label>
-        <input id="cityInput" type ="text" name="cityName" placeHolder="Enter city name"></input>
-        <button type="submit" name="submit"> Get Weather</button>
-      </form>
-
-      <form action="/driver" method="get">
-        <label for="cityInput">City Name: </label>
-        <input id="cityInput" type ="text" name="driver" placeHolder="Enter city name"></input>
-        <button type="submit" name="submit"> Get Weather</button>
-      </form>
+      <!-- Here a loader is created which 
+             loads till response comes -->
+             <div class="d-flex justify-content-center">
+              <div class="spinner-border" 
+                   role="status" id="loading">
+                  <span class="sr-only">Loading...</span>
+              </div>
+          </div>
+          <h1>Registered Driver</h1>
+          <!-- table for showing data -->
+          <table id="driver"></table>
 
       <script src="js/main.js"></script>
 
